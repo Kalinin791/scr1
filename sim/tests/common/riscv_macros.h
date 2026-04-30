@@ -102,8 +102,10 @@
 #define INTERRUPT_HANDLER j other_exception /* No interrupts should occur */
 
 #define RVTEST_CODE_BEGIN                                               \
+        .org 0x200,0;                                                   \
+        MSG_TRAP:                                                       \
+        .string "illegal";                        \ 
         .section .text.init;                                            \
-        .org 0xC0, 0x00;                                                \
         .balign  64;                                                    \
         .weak stvec_handler;                                            \
         .weak mtvec_handler;                                            \
@@ -116,6 +118,7 @@ trap_vector:                                                            \
         beq a4, a5, _report;                                            \
         li a5, CAUSE_MACHINE_ECALL;                                     \
         beq a4, a5, _report;                                            \
+break_from_loop:                                                        \
         /* if an mtvec_handler is defined, jump to it */                \
         la a4, mtvec_handler;                                           \
         beqz a4, 1f;                                                    \
@@ -133,6 +136,7 @@ _report:                                                                \
         j sc_exit;                                                      \
         .balign  64;                                                    \
         .globl _start;                                                  \
+        .org 0x200;                                           \
 _start:                                                                 \
         RISCV_MULTICORE_DISABLE;                                        \
         /*INIT_SPTBR;*/                                                 \
