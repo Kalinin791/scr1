@@ -21,7 +21,9 @@ SECTIONS {
   .text.init 0x200 : { 
     *(.text.init) 
   } >RAM
-
+.text.start 0x400 : {
+    *(.text.start)
+  } >RAM
   .text : {
     . = 0x1000;
     *crt.o(.text .text.*)
