@@ -103,8 +103,21 @@
 
 #define RVTEST_CODE_BEGIN                                               \
         .org 0x200,0;                                                   \
+        /* init for loop, 0xf0000000 address for print */               \
+        lui a6, 0xf0000;                                                \
+        la a7, MSG_TRAP;                                                \
+next_iter:                                                              \
+        lb a5, 0(a7);                                                   \
+        beq a5, x0, 99f;                                                \
+        sw a5, 0(a6);   /* write to a6 char for print */                \
+        li t1, 100;                                                      \
+98:     addi t1, t1, -1;                                                 \
+        bnez t1, 98b;                                                    \
+        addi a7, a7, 1;                                                 \
+        jal x0,next_iter;                                               \
+99:                                                                     \
         MSG_TRAP:                                                       \
-        .string "illegal";                        \ 
+        .string "illegal";                                              \
         .section .text.init;                                            \
         .balign  64;                                                    \
         .weak stvec_handler;                                            \
@@ -132,7 +145,10 @@ handle_exception:                                                       \
 other_exception:                                                        \
         /* some unhandlable exception occurred */                       \
         li   a0, 0x1;                                                   \
-_report:                                                                \
+_report:                                                        \
+        li t0, 100000;                                                     \
+99:     addi t0, t0, -1;                                                \
+        bnez t0, 99b;                                                   \
         j sc_exit;                                                      \
         .balign  64;                                                    \
         .globl _start;                                                  \
