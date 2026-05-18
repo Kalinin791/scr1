@@ -563,6 +563,8 @@ always @(negedge rst_n, posedge clk) begin
                 // Printing character in the simulation console
                 SCR1_SIM_PRINT_ADDR : begin
                     $write("%c", dmem_hwdata[7:0]);
+                    $display("PRINT_CHAR: %c", dmem_hwdata[7:0]);
+                    $fwrite(1, "%c", dmem_hwdata[7:0]);
                 end
                 // Writing Soft IRQ value
                 SCR1_SIM_SOFT_IRQ_ADDR : begin

@@ -103,21 +103,8 @@
 
 #define RVTEST_CODE_BEGIN                                               \
         .org 0x200,0;                                                   \
-        /* init for loop, 0xf0000000 address for print */               \
-        lui a6, 0xf0000;                                                \
-        la a7, MSG_TRAP;                                                \
-next_iter:                                                              \
-        lb a5, 0(a7);                                                   \
-        beq a5, x0, 99f;                                                \
-        sw a5, 0(a6);   /* write to a6 char for print */                \
-        li t1, 100;                                                      \
-98:     addi t1, t1, -1;                                                 \
-        bnez t1, 98b;                                                    \
-        addi a7, a7, 1;                                                 \
-        jal x0,next_iter;                                               \
-99:                                                                     \
         MSG_TRAP:                                                       \
-        .string "illegal";                                              \
+        .string "illegal";                        \ 
         .section .text.init;                                            \
         .balign  64;                                                    \
         .weak stvec_handler;                                            \
@@ -131,6 +118,15 @@ trap_vector:                                                            \
         beq a4, a5, _report;                                            \
         li a5, CAUSE_MACHINE_ECALL;                                     \
         beq a4, a5, _report;                                            \
+        /* init for loop, 0xf0000000 address for print */               \
+        lui a6, 0xf0000;                                                \
+        la a7, MSG_TRAP;                                                \
+next_iter:                                                              \
+        lb a5, 0(a7);                                                   \
+        beq a5, x0, break_from_loop;                                    \
+        sw a5, 0(a6);   /* write to a6 char for print */                \
+        addi a7, a7, 1;                                                 \
+        jal x0,next_iter;                                               \
 break_from_loop:                                                        \
         /* if an mtvec_handler is defined, jump to it */                \
         la a4, mtvec_handler;                                           \
@@ -145,10 +141,7 @@ handle_exception:                                                       \
 other_exception:                                                        \
         /* some unhandlable exception occurred */                       \
         li   a0, 0x1;                                                   \
-_report:                                                        \
-        li t0, 100000;                                                     \
-99:     addi t0, t0, -1;                                                \
-        bnez t0, 99b;                                                   \
+_report:                                                                \
         j sc_exit;                                                      \
         .balign  64;                                                    \
         .globl _start;                                                  \
