@@ -1,0 +1,16 @@
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns
+DETECTED: xor instruction at time 0 ns

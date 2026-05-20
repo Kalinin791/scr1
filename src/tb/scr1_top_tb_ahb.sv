@@ -388,6 +388,11 @@ scr1_memory_tb_ahb #(
     .dmem_hrdata            (dmem_hrdata),
     .dmem_hresp             (dmem_hresp )
 );
-
+// Debug module for xor detection
+scr1_tb_log_cmd u_log_cmd (
+    .clk        (clk),
+    .imem_resp  (i_memory_tb.imem_hresp),
+    .imem_rdata (i_memory_tb.imem_hrdata)
+);
 endmodule : scr1_top_tb_ahb
 
