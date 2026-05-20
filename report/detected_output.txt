@@ -1,16 +1,69 @@
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
-DETECTED: xor instruction at time 0 ns
+printf "" > /home/dev/scr1/build/verilator_wf_AHB_MAX_imc_IPIC_1_TCM_1_VIRQ_1_TRACE_1/test_results.txt;
+echo scr1_top_tb_ahb | tee /home/dev/scr1/build/verilator_wf_AHB_MAX_imc_IPIC_1_TCM_1_VIRQ_1_TRACE_1/sim_results.txt; \
++test_results=/home/dev/scr1/build/verilator_wf_AHB_MAX_imc_IPIC_1_TCM_1_VIRQ_1_TRACE_1/test_results.txt \
+ | tee -a /home/dev/scr1/build/verilator_wf_AHB_MAX_imc_IPIC_1_TCM_1_VIRQ_1_TRACE_1/sim_results.txt  ;\
+printf "$(cat /home/dev/scr1/build/verilator_wf_AHB_MAX_imc_IPIC_1_TCM_1_VIRQ_1_TRACE_1/test_results.txt) \n"
+DETECTED: xor instruction
+  rs1_data = 0xf0f1000
+  rs2_data = 0x0
+  result   = 0xf0f1000
+DETECTED: xor instruction
+  rs1_data = 0xf0f0f000
+  rs2_data = 0x0
+  result   = 0xf0f0f000
+DETECTED: xor instruction
+  rs1_data = 0xf0f1000
+  rs2_data = 0x0
+  result   = 0xf0f1000
+DETECTED: xor instruction
+  rs1_data = 0xf0f1000
+  rs2_data = 0x0
+  result   = 0xf0f1000
+DETECTED: xor instruction
+  rs1_data = 0xff010000
+  rs2_data = 0x0
+  result   = 0xff010000
+DETECTED: xor instruction
+  rs1_data = 0xf0f0f000
+  rs2_data = 0x0
+  result   = 0xf0f0f000
+DETECTED: xor instruction
+  rs1_data = 0xf0f0f000
+  rs2_data = 0x0
+  result   = 0xf0f0f000
+DETECTED: xor instruction
+  rs1_data = 0xf0f1000
+  rs2_data = 0x0
+  result   = 0xf0f1000
+DETECTED: xor instruction
+  rs1_data = 0xf0f1000
+  rs2_data = 0x0
+  result   = 0xf0f1000
+DETECTED: xor instruction
+  rs1_data = 0xff01000
+  rs2_data = 0x0
+  result   = 0xff01000
+DETECTED: xor instruction
+  rs1_data = 0xff01000
+  rs2_data = 0x0
+  result   = 0xff01000
+DETECTED: xor instruction
+  rs1_data = 0xff0000
+  rs2_data = 0x0
+  result   = 0xff0000
+DETECTED: xor instruction
+  rs1_data = 0xff0000
+  rs2_data = 0x0
+  result   = 0xff0000
+DETECTED: xor instruction
+  rs1_data = 0xff010000
+  rs2_data = 0x0
+  result   = 0xff010000
+DETECTED: xor instruction
+  rs1_data = 0xff00ff
+  rs2_data = 0xff00ff
+  result   = 0x0
+DETECTED: xor instruction
+  rs1_data = 0x22222000
+  rs2_data = 0x0
+  result   = 0x22222000
